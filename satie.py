@@ -1,8 +1,9 @@
 import bge
 import liblo
 import math
-import maths
 import os
+
+from . import maths
 """
 A sound source game object to communicate with SATIE audio engine.
 Needs to be attached to a 3D object in BGE
