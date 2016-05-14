@@ -79,13 +79,12 @@ class Satie(bge.types.KX_GameObject):
 
     def _getLocation(self):
         # parent = self.parent
-        print(bge.logic.activeObjects)
         location = self.worldPosition
         return location
 
     def _getAED(self):
         distance = self._getLocation() - bge.logic.activeObjects[self.listener.name].worldPosition
-        print("distance", distance)
+        # print("distance", distance)
         aed = maths.xyz_to_aed(distance)
         gain = math.log(maths.distance_to_attenuation(aed[2])) * 20
         aed[2] = gain
