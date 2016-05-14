@@ -1,8 +1,9 @@
 import bge
 import liblo
 import math
-import maths
 import os
+
+from . import maths
 """
 A sound source game object to communicate with SATIE audio engine.
 Needs to be attached to a 3D object in BGE
@@ -82,7 +83,7 @@ class Satie(bge.types.KX_GameObject):
         return location
 
     def _getAED(self):
-        distance = self._getLocation()
+        distance = self._getLocation() - bge.logic.activeObjects[self.listener.name].worldPosition
         # print("distance", distance)
         aed = maths.xyz_to_aed(distance)
         gain = math.log(maths.distance_to_attenuation(aed[2])) * 20
